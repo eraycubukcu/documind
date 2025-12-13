@@ -1,0 +1,7 @@
+{
+  "name": "DocuMind",
+  "description": "A modern, AI-powered document editor interface with template galleries, dashboards, and real-time collaboration features.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

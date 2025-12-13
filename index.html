@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>DocuMind</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        /* Define CSS Variables for Theming */
+        :root {
+            /* Light Mode Colors (RGB values for Tailwind opacity support) */
+            --bg-background: 244 244 245; /* zinc-100 */
+            --bg-surface: 255 255 255;    /* white */
+            --bg-surface-dark: 228 228 231; /* zinc-200 */
+            --border-color: 228 228 231;  /* zinc-200 */
+            --border-dark: 212 212 216;   /* zinc-300 */
+        }
+        
+        .dark {
+            /* Dark Mode Colors - Unified "Modern Grey" Look */
+            /* Instead of pure black (9 9 11), we use Zinc-900 (24 24 27) for both background and surface */
+            --bg-background: 24 24 27;    /* zinc-900 */
+            --bg-surface: 24 24 27;       /* zinc-900 (Matches background for seamless look) */
+            --bg-surface-dark: 39 39 42;  /* zinc-800 (For hovers/inputs) */
+            --border-color: 39 39 42;     /* zinc-800 (Subtle borders separate the areas) */
+            --border-dark: 63 63 70;      /* zinc-700 */
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a1a1aa; /* zinc-400 */
+            border-radius: 3px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #3f3f46; /* zinc-700 */
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #71717a; 
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #52525b; 
+        }
+
+        .page-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 40px rgba(0,0,0,0.1);
+        }
+        .selection-highlight::selection {
+            background: #e4e4e7;
+            color: black;
+        }
+        /* Custom scrollbar hiding utility */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        // Use RGB variables for opacity support
+                        background: "rgb(var(--bg-background) / <alpha-value>)", 
+                        "background-dark": "rgb(var(--bg-surface-dark) / <alpha-value>)",
+                        surface: "rgb(var(--bg-surface) / <alpha-value>)",
+                        "surface-dark": "rgb(var(--bg-surface-dark) / <alpha-value>)",
+                        border: "rgb(var(--border-color) / <alpha-value>)",
+                        "border-dark": "rgb(var(--border-dark) / <alpha-value>)",
+                        
+                        primary: "#135bec",
+                        "text-secondary": "#9da6b9",
+                        highlight: "#fef08a",  // yellow-200
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                    },
+                },
+            },
+        }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0"
+  }
+}
+</script>
+<!-- Library for HTML to DOCX conversion -->
+<script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script>
+</head>
+<body class="bg-background text-zinc-700 dark:text-zinc-300 font-display h-screen flex overflow-hidden transition-colors duration-300">
+    <div id="root" class="w-full h-full flex"></div>
+</body>
+</html>
